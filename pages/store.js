@@ -1,7 +1,9 @@
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 
-function reducer(state = [], action){
-    return state
-}
+import reducerCars from './cars'
 
-export default createStore(reducer)
+const rootReducer = combineReducers({
+    cars: reducerCars
+})
+
+export default createStore(rootReducer)
