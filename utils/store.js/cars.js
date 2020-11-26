@@ -17,5 +17,15 @@ const INITIAL_STORE = [
 ]
 
 export default function reducer(state = INITIAL_STORE, action){
+    if(action.type === 'ADD_CAR'){
+        return [...state, action.car]
+    }
     return state
+}
+
+export const addCar = car =>{
+    return {
+        type: "ADD_CAR",
+        car
+    }
 }

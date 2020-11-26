@@ -1,7 +1,12 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 export default function Footer() {
     return (
-    <footer>Shopping-Car &copy; {new Date().getFullYear()}</footer>
+        <Container>
+            <footer style={{margin: "2rem", textAlign: "center"}}>
+                Shopping-Car &copy; {new Date().getFullYear()}
+            </footer>
+        </Container>
     )
 }
