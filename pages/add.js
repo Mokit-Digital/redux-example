@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { addCar } from '../utils/store.js/cars'
-import { hideMessage, showMessage } from '../utils/store.js/layout'
+import { addCar } from '../utils/store/ducks/cars'
+import { hideMessage, showMessage } from '../utils/store/ducks/layout'
 import { useDispatch } from 'react-redux'
+import { addCarFetch } from '../utils/store/fetchActions/fetchActions'
 
 export default function Add() {
 
@@ -19,7 +20,7 @@ export default function Add() {
 	function onSubmit(e) {
 		e.preventDefault()
 
-		dispatch(addCar(form))
+		dispatch((addCarFetch(form)))
 
 		setForm({
 			name: "",

@@ -2,8 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { Button } from 'react-bootstrap';
+import { useSelector } from 'react-redux'
 
 export default function Header() {
+	const length = useSelector(state => state.cart.length)
+
 	return (
 		<nav className="l-header navbar navbar-expand-lg navbar-dark bg-light">
 			<Link href="/list">
@@ -28,9 +31,10 @@ export default function Header() {
 			</div>
 			<ul className="navbar-nav ml-md-auto">
 				<Link href="/cart">
-					<AiOutlineShoppingCart>
-						<span>0</span>
-					</AiOutlineShoppingCart>
+					<div>
+						<AiOutlineShoppingCart size="40" />
+						<span>{length}</span>
+					</div>
 				</Link>
 			</ul>
 		</nav>
