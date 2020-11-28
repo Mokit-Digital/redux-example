@@ -4,10 +4,14 @@ import Header from '../components/Layout/Header';
 import store from '../utils/store/ducks/store'
 import { Provider } from 'react-redux'
 import Message from '../components/Message/message';
+import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
+      <Head>
+        <title>Redux Example</title>
+      </Head>
       <Header/>
       <Component {...pageProps} />
       <Message message={`Carro Adicionado!`}/>
