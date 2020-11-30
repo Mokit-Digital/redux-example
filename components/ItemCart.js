@@ -5,7 +5,7 @@ import { FaPlus, FaTrash, FaMinus } from 'react-icons/fa'
 export default function ItemCart({ item, minusAmount, plusAmount, form, removeItemCart }) {
 
     return(
-        <Col key={item._id}>
+        <Col key={item._id} style={{margin: "2rem"}}>
             <Card
                 bg={'dark'}
                 text={'dark' === 'light' ? 'dark' : 'white'}
@@ -20,7 +20,7 @@ export default function ItemCart({ item, minusAmount, plusAmount, form, removeIt
                 <Button 
                     className="btn-danger" 
                     style={{ position: "absolute", bottom: 15, right: 15 }}
-                    onClick={()=> removeItemCart(item._id)}    
+                    onClick={()=> removeItemCart(item)}    
                 >
                     <FaTrash />
                 </Button>

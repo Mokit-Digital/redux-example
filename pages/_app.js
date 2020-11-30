@@ -3,8 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../components/Layout/Header';
 import store from '../utils/store/ducks/store'
 import { Provider } from 'react-redux'
-import Message from '../components/Message/message';
+import '../styles/messages.css';
 import Head from 'next/head'
+import Messages from '../components/Message/MessagesAll'
+
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,8 +15,8 @@ function MyApp({ Component, pageProps }) {
         <title>Redux Example</title>
       </Head>
       <Header/>
+      <Messages />
       <Component {...pageProps} />
-      <Message message={`Carro Adicionado!`}/>
       <Footer />
     </Provider>
   )

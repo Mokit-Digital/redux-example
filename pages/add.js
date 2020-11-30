@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { addCar } from '../utils/store/ducks/cars'
-import { hideMessage, showMessage } from '../utils/store/ducks/layout'
-import { useDispatch } from 'react-redux'
+import { addMessage } from '../utils/store/ducks/layout'
+import { useDispatch, useSelector } from 'react-redux'
 import { addCarFetch } from '../utils/store/fetchActions/fetchActions'
+import Router from 'next/router'
 
 export default function Add() {
+
+	const { isAuthenticate } = useSelector((state)=>state.auth)
+
+	//Redireciona se não for autenticado
+	useEffect(()=>{
+		if(!isAuthenticate){
+			Router.push('/')
+		}	
+	})
+	
 
 	const [form, setForm] = useState({ name: "", url: "" })
 	const dispatch = useDispatch()
@@ -27,11 +37,7 @@ export default function Add() {
 			url: ""
 		})
 
-		dispatch(showMessage())
-
-		setTimeout(() => {
-			dispatch(hideMessage())
-		}, 2500)
+		dispatch(addMessage(`${form.name} cadastrado com sucesso`))
 	}
 
 	return (

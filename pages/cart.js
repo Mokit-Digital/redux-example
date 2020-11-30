@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux'
 import ItemCart from '../components/ItemCart';
 import { removeItem } from '../utils/store/ducks/cart'
-
+import { addMessage } from '../utils/store/ducks/layout'
 
 export default function Cart() {
 	const [ form, setForm ] = useState({
@@ -13,8 +13,10 @@ export default function Cart() {
 	const cart = useSelector(state => state.cart)
 	const dispatch = useDispatch()
 
-	function removeItemCart(id){
-		dispatch(removeItem(id))
+	function removeItemCart(car){
+		dispatch(removeItem(car._id))
+
+		dispatch(addMessage(`${car.name} Removido com sucesso!`))
 	}
 
 	function plusAmount(){
@@ -33,7 +35,7 @@ export default function Cart() {
 
 	return (
 		<Container>
-			<Row xs="12" sm="3">
+			<Row xs="12" sm="4">
 				{cart.length === 0 &&
 					<Col sm={12}>
 							<p className="mt-5 text-warning text-center">Sem produtos no Carrinho...</p>
